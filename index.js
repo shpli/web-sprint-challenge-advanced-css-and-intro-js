@@ -208,10 +208,10 @@ Practice accessing data above by console.log-ing following items:
 (no functions needed) */
 
 //(1) Name of the first artist (0th index) in the array
-
+console.log(artists[0]);
 
 //(2) Bio of the third artist (2nd index) in the array 
-
+console.log(artists[2]);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -228,8 +228,9 @@ There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is current
  
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
-function getArtistByIndex(/*Your Code Here*/) {
-  /*Your Code Here*/
+function getArtistByIndex(array, index) {
+  let newArr = array[index]
+  return `the artist at index ${newArr.id} is ${newArr.name}`;
 }  
 
 
@@ -242,10 +243,17 @@ Use get20s to do the following:
 Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/*Your Code Here*/){
-  /*Your Code Here*/
+function get20s(array){
+  let rip = [];
+  for (let i = 0; i < array.length; i++){
+    let split = array[i].years.split(" - ",2)
+    let int = parseInt(split)
+    if (int >= 1901){
+      rip.push(array[i].name)
+    }
+  }
+  return (rip)
 }
-
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -257,8 +265,9 @@ function get20s(/*Your Code Here*/){
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(/*Your Code Here*/){
-   /*Your Code Here*/
+function removeArtist(array, index){
+   array.splice(index, 1)
+   return array.length
 }
    
 
@@ -278,8 +287,16 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/){
-    /*Your Code Here*/
+function addArtist(array){
+    array.push({
+      id: 20,
+      name: 'Riley Edwards',
+      years: '2000 - 2020',
+      genre: 'Web Design',
+      nationality: 'Vietnamese',
+      bio: '"爨癵驫麣纞虋讟钃鸜麷鞻韽韾顟顠饙饙騳騱爨癵驫麣纞虋讟钃鸜麷鞻韽韾顟顠饙饙騳騱爨癵驫麣纞虋讟钃鸜麷鞻韽韾顟顠饙饙騳騱爨癵驫麣纞虋讟钃鸜麷鞻韽韾顟顠饙饙騳騱爨癵驫麣纞虋讟钃鸜麷鞻韽韾顟顠饙饙騳騱爨癵驫麣纞虋讟钃鸜麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻麷鞻'
+    });
+    return array;
   }
 
   
@@ -291,10 +308,15 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(array){
+  let woah = [];
+  array.map(cringus =>{
+    if (cringus.paintings > 100){
+      woah.push(cringus.name)
+    }
+  })
+     return woah;
 }
-
 
 
 
